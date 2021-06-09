@@ -4,6 +4,7 @@ import com.example.secapp.product.Product;
 import com.example.secapp.product.ProductRepository;
 import com.example.secapp.user.Account;
 import com.example.secapp.user.Authority;
+import com.example.secapp.user.AuthorityRepo;
 import com.example.secapp.user.UserRepository;
 import com.github.javafaker.Faker;
 
@@ -35,6 +36,8 @@ public class SecappRunner implements CommandLineRunner {
     @Autowired
     private UserRepository userRepo;
 
+    @Autowired
+    private AuthorityRepo authorityRepo;
 
 
     @Override
@@ -70,11 +73,13 @@ public class SecappRunner implements CommandLineRunner {
         userRepo.save(acc);
 
         authority.setName("READ");
+        authority.setAccount(acc);
+        authorityRepo.save(authority);
+
         authority2.setName("WRITE");
-        authorities.add(authority);
-        authorities.add(authority2);
-        acc.setAuthorities(authorities);
-        userRepo.save(acc);
+        authority2.setAccount(acc);
+        authorityRepo.save(authority2);
+
 
 
     }
