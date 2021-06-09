@@ -42,22 +42,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web
-				.ignoring()
-				.antMatchers("/");
-	}
-
-	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 				.authorizeRequests()
-				.anyRequest().authenticated()
+					.antMatchers("/").permitAll()
+					.anyRequest().authenticated()
 				.and()
-				.formLogin().permitAll()
-				.and()
+				.formLogin()
+					.loginPage("/login")
+					.permitAll()
+					.and()
 				.logout().permitAll()
-				.and()
+					.and()
 				.exceptionHandling().accessDeniedPage("/403");
 				
 	}

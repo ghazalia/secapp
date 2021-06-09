@@ -7,7 +7,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.secapp.user.User;
+import com.example.secapp.user.Account;
 
 public class MyUserDetails implements UserDetails {
 	/**
@@ -15,13 +15,13 @@ public class MyUserDetails implements UserDetails {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private final User user;
+	private final Account user;
 
-	public MyUserDetails(User user) {
-		this.user = user;
+	public MyUserDetails(Account account) {
+		this.user = account;
 	}
 
-	public final User getUser() {
+	public final Account getUser() {
 		return this.user;
 	}
 

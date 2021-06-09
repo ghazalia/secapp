@@ -1,13 +1,9 @@
 package com.example.secapp.user;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "authority")
 public class Authority {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +13,7 @@ public class Authority {
 
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
 	@ManyToOne
-	private User user;
+	private Account account;
 
 	public Long getId() {
 		return id;
@@ -35,12 +31,12 @@ public class Authority {
 		this.name = name;
 	}
 
-	public User getUser() {
-		return user;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 }
