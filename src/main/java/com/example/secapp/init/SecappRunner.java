@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * SecappRunner
  * initailiza database
@@ -34,6 +37,7 @@ public class SecappRunner implements CommandLineRunner {
 
             p.setName(f.commerce().productName());
             price = min + (f.random().nextDouble() * (max - min));
+            price = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP).doubleValue();
             p.setPrice(price);
             
             prodRepo.save(p);
