@@ -18,7 +18,8 @@ public class MyUserDetailsService implements UserDetailsService {
 
 	@Override
 	public MyUserDetails loadUserByUsername(String username) {
-		Supplier<UsernameNotFoundException> supplier = () -> new UsernameNotFoundException("Check your username");
+		Supplier<UsernameNotFoundException> supplier =
+				() -> new UsernameNotFoundException("Check your username");
 
 		Account u = userRepo.findByUsername(username).orElseThrow(supplier);
 

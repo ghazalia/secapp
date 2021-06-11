@@ -3,6 +3,7 @@ package com.example.secapp.user;
 import java.util.List;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "accounts")
@@ -11,6 +12,7 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotEmpty
 	private String username;
 	private String password;
 	@Column(name = "is_enabled")

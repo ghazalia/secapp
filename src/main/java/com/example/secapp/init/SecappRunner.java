@@ -2,10 +2,7 @@ package com.example.secapp.init;
 
 import com.example.secapp.product.Product;
 import com.example.secapp.product.ProductRepository;
-import com.example.secapp.user.Account;
-import com.example.secapp.user.Authority;
-import com.example.secapp.user.AuthorityRepo;
-import com.example.secapp.user.UserRepository;
+import com.example.secapp.user.*;
 import com.github.javafaker.Faker;
 
 import org.slf4j.Logger;
@@ -20,6 +17,9 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.secapp.user.Authorization.READ;
+import static com.example.secapp.user.Authorization.WRITE;
 
 /**
  * SecappRunner
@@ -72,18 +72,17 @@ public class SecappRunner implements CommandLineRunner {
         acc.setEnabled(true);
         userRepo.save(acc);
 
-        authority.setName("READ");
+//READ, WRITE, EXECUTE
+///hash map
+
+        authority.setName(READ.getAuth());
         authority.setAccount(acc);
         authorityRepo.save(authority);
 
-        authority2.setName("WRITE");
+        authority2.setName(WRITE.getAuth());
         authority2.setAccount(acc);
         authorityRepo.save(authority2);
 
-
-
     }
 
-    
-    
 }
